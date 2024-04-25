@@ -28,7 +28,6 @@ cylinder.add_all_rigid_body_dofs()
 cylinder.inertia_matrix = cylinder.compute_rigid_body_inertia()
 cylinder.keep_immersed_part()
 cylinder.hydrostatic_stiffness = cylinder.compute_hydrostatic_stiffness(rho=1025)
-print(cylinder.volume)
 cylinder.show()
 
 # Print body particulars
