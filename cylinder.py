@@ -18,15 +18,15 @@ from capytaine.io.mesh_loaders import load_STL
 # Import logging module and set to 'debug' level
 import logging
 logging.basicConfig(level=logging.INFO)
-mesh=load_STL("D:\Rhino\cylinder.STL", name=None)
+mesh=cpt.load_mesh("D:\Rhino\cylinder.STL", file_format="stl")
 # radius=2, height=10
 
 cylinder=cpt.FloatingBody(mesh=mesh)
 cylinder.center_of_mass=np.array([0,0,0])
 cylinder.rotation_center=np.array([0,0,0])
 cylinder.add_all_rigid_body_dofs()
-cylinder.inertia_matrix = cylinder.compute_rigid_body_inertia()
 cylinder.keep_immersed_part()
+cylinder.inertia_matrix = cylinder.compute_rigid_body_inertia()
 cylinder.hydrostatic_stiffness = cylinder.compute_hydrostatic_stiffness(rho=1025)
 cylinder.show()
 
