@@ -18,7 +18,7 @@ from capytaine.io.mesh_loaders import load_STL
 # Import logging module and set to 'debug' level
 import logging
 logging.basicConfig(level=logging.INFO)
-mesh=cpt.load_mesh("D:\Rhino\cylinder.STL", file_format="stl")
+mesh=cpt.load_mesh("D:\Rhino\cylinder.STL", file_format="stl",name="cylinder")
 # radius=2, height=10
 
 cylinder=cpt.FloatingBody(mesh=mesh)

@@ -1,0 +1,33 @@
+
+WEC-Sim Input From Standard wecSimInputFile.m Of Case Directory... 
+
+ans =
+
+     0
+
+WEC-Sim: An open-source code for simulating wave energy converters
+Version: 6.0
+
+Initializing the Simulation Class...
+	Case Dir: D:\capytaine_code\wecSim\multiple device 
+wecSimMCR Case 1
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('h5readc')" style="font-weight:bold">h5readc</a>
+The HDF5 library encountered an error and produced the following stack trace information:
+
+    H5G__traverse_real    component not found
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('h5read', 'C:\Program Files\MATLAB\R2023b\toolbox\matlab\imagesci\h5read.m', 93)" style="font-weight:bold">h5read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2023b\toolbox\matlab\imagesci\h5read.m',93,0)">line 93</a>)
+[data,var_class] = h5readc(Filename,Dataset,start,count,stride);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('readBEMIOH5', 'C:\Users\黃崧憲\WEC-Sim\source\functions\BEMIO\readBEMIOH5.m', 35)" style="font-weight:bold">readBEMIOH5</a> (<a href="matlab: opentoline('C:\Users\黃崧憲\WEC-Sim\source\functions\BEMIO\readBEMIOH5.m',35,0)">line 35</a>)
+hydroData.properties.name = h5read(filename,[h5BodyName '/properties/name']);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('initializeWecSim', 'C:\Users\黃崧憲\WEC-Sim\source\functions\initializeWecSim.m', 190)" style="font-weight:bold">initializeWecSim</a> (<a href="matlab: opentoline('C:\Users\黃崧憲\WEC-Sim\source\functions\initializeWecSim.m',190,0)">line 190</a>)
+        tmp_hydroData = readBEMIOH5(body(ii).h5File, body(ii).number, body(ii).meanDrift);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', 'C:\Program Files\MATLAB\R2023b\toolbox\matlab\lang\run.m', 99)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2023b\toolbox\matlab\lang\run.m',99,0)">line 99</a>)
+evalin('caller', strcat(script, ';'));
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('wecSim', 'C:\Users\黃崧憲\WEC-Sim\source\wecSim.m', 43)" style="font-weight:bold">wecSim</a> (<a href="matlab: opentoline('C:\Users\黃崧憲\WEC-Sim\source\wecSim.m',43,0)">line 43</a>)
+run('initializeWecSim');
+} 
