@@ -61,7 +61,7 @@ omega_2=2*pi./T_2;
 % calculate RAO include b_pto
 C_b=zeros(100,1);
 for i=1:100
-    C_b(i)=-(omega(i))^2*(M_total(i))+1i*(omega(i)*radiation_damping(3,3,i)+B_pto)+hydrostatic_stiff(3,3);
+    C_b(i)=-(omega(i))^2*(M_total(i))+1i*omega(i)*(radiation_damping(3,3,i)+B_pto)+hydrostatic_stiff(3,3);
 end
 RAO_b=zeros(100,1);
 for i=1:100
@@ -81,7 +81,7 @@ end
 % calculate power
 for i=1:9
     for j=1:15
-    power(i,j)=0.5*(omega_2(j))^2*B_pto*(z_a(i,j))^2/1000; %kW
+        power(i,j)=0.5*(omega_2(j))^2*B_pto*(z_a(i,j))^2/1000; %kW
     end
 end
 
@@ -104,15 +104,18 @@ plot(omega,value)
 
 figure(4)
 plot(omega,abs(rao(3,:)))
+title("RAO imported from Capytaine")
 xlabel("wave frequency(rad/s)")
 ylabel("Heave RAO(-)")
 
 %Compare figure 4 with figure 5
 figure(5)
 plot(omega,abs(RAO))
+title("RAO (Manually calculation)")
 
 figure(6)
 plot(omega,abs(RAO_b))
+title("RAO (Manually calculation with PTO damping)")
 
 figure(7)
 imagesc(power);

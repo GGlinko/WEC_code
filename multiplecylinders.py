@@ -48,7 +48,7 @@ cylinder3.hydrostatic_stiffness = cylinder3.compute_hydrostatic_stiffness(rho=10
 cylinder4=cpt.FloatingBody(mesh=mesh,name='body4')
 cylinder4.center_of_mass=np.array([0,20,0])
 cylinder4.rotation_center=np.array([0,20,0])
-cylinder4.add_all_rigid_body_dofs()
+cylinder4.add_translation_dof(name='Heave')
 cylinder4.keep_immersed_part()
 cylinder4.inertia_matrix = cylinder4.compute_rigid_body_inertia()
 cylinder4.hydrostatic_stiffness = cylinder4.compute_hydrostatic_stiffness(rho=1025)
@@ -56,10 +56,10 @@ cylinder4.hydrostatic_stiffness = cylinder4.compute_hydrostatic_stiffness(rho=10
 
 all_bodies = cylinder1 + cylinder2 + cylinder3 + cylinder4
 all_bodies.hydrostatic_stiffness=all_bodies.compute_hydrostatic_stiffness(rho=1025)
-print(all_bodies.hydrostatic_stiffness)
+all_bodies.show()
 
 # Define range of frequencies as a Numpy array
-omega_range = np.linspace(0.01,10,100)
+omega_range = 0.5
 
 problems = [cpt.RadiationProblem(body=all_bodies, radiating_dof=dof, omega=omega)
             for dof in all_bodies.dofs

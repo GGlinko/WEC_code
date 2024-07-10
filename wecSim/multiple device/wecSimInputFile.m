@@ -1,4 +1,4 @@
-0%% Simulation Data
+%% Simulation Data
 simu = simulationClass();               % Initialize Simulation Class
 simu.simMechanicsFile = 'PAs.slx';    % Specify Simulink Model File
 simu.mode = 'normal';                   % Specify Simulation Mode ('normal','accelerator','rapid-accelerator')
