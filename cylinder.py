@@ -36,6 +36,7 @@ cylinder.show()
 
 # Define range of frequencies as a Numpy array
 omega_range = np.linspace(0.01,10,100)
+period_range=np.arange(0.25,16.75,0.5)
 
 # Define the radiation and diffraction problems for the floating body
 problems = [cpt.RadiationProblem(body=cylinder, radiating_dof=dof, omega=omega)

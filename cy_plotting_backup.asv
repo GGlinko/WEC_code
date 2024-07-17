@@ -46,7 +46,7 @@ end
 %% Find natural frequency
 K=hydrostatic_stiff(3,3); %Heave hydrostatic stiffness
 A=squeeze(added_mass(3,3,:)); %Added mass matrix
-
+B_pto=28000; %Ns/m
 value=zeros(100,1);
 
 T_sign=sort(2*pi./omega);             %averaged zero-crossing period
@@ -69,7 +69,7 @@ for i=1:100
     [~,natural_frquency_index(i)]=min(abs(value-0));
 end
 natural_frequency=omega(natural_frquency_index(1)); 
-fprintf('Natural frequency of the device is: %.5f\n', natural_frequency)
+fprintf('Natural frequency of the device is: %.5f', natural_frequency)
 
 %% Find optimal B_pto
 R_1=zeros(100,1);
@@ -116,10 +116,9 @@ end
 
 optimal_b=b_pto(natural_frquency_index(1));
 
-fprintf('Optimal power takeoff coefficient of the device is:%d[Ns/m]', optimal_b)
+fprintf('Optimal power takeoff coefficient of the device is:%d[N/m/s]', optimal_b)
 %% Calculate power matrix
 % Value for power matrix
-B_pto=29000; %Ns/m
 z_a=zeros(9,15);
 omega_index=zeros(15,1);
 T_2=1:15;
@@ -196,6 +195,6 @@ set(gca,'XTick',1:15,'YTick',1:9)
 xlabel('Wave Period [s]')
 ylabel('Significant Wave Height [m]')
 ylabel(colorbar,'Power(kW)')
-title(['Power Matrix for Damping = ' num2str(B_pto(end)) ' [N/m/s](single device)'])
+title(['Power Matrix for Damping = ' num2str(B_pto(end)) ' [N/m/s]'])
 
 
