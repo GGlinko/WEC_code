@@ -62,7 +62,14 @@ end
 
 % Plot the (omega,value) to find the intersection=natrural frequency
 figure()
+hold on
 plot(omega,value)
+yline(0,'-','Zero Line');
+plot([1.2209, 1.2209],[-20. 0])
+xlabel('Wave frequency(rad/s)')
+ylabel('Value')
+title('Natural Frequency Derivation')
+hold off
 
 % Find the closest value to zero
 for i=1:100
@@ -156,7 +163,7 @@ end
 figure()
 plot(omega,squeeze(added_mass(3,3,:)))
 xlabel("wave frequency(rad/s)")
-ylabel("added_mass")
+ylabel("added mass")
 title("Heave added mass")
 figure()
 plot(omega,squeeze(radiation_damping(3,3,:)))
@@ -175,10 +182,16 @@ ylabel("Heave RAO(-)")
 figure()
 plot(omega,abs(RAO))
 title("RAO (Manually calculation)")
+xlabel("Wave Frequency(rad/s)")
+ylabel("Heave RAO(-)")
 
 figure()
 plot(omega,abs(RAO_b))
 title("RAO (Manually calculation with PTO damping)")
+
+% Heave excitation force
+% figure()
+% plot(omega, F_excitation)
 
 figure()
 imagesc(power);
